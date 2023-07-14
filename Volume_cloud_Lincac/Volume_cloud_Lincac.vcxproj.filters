@@ -19,6 +19,15 @@
     <Filter Include="ImGUI">
       <UniqueIdentifier>{3e8162a9-d2fe-4d6e-ae6e-1777d4d26ce8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="资源文件\Noise">
+      <UniqueIdentifier>{e6e98f8d-b2d1-4c70-a643-8b67176bf925}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Noise">
+      <UniqueIdentifier>{2822abe4-f5bd-4572-bb40-61cd6af83533}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Noise">
+      <UniqueIdentifier>{94f40aaa-053a-4cea-b247-8c477286e949}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="shader\main.fs">
@@ -36,17 +45,23 @@
     <None Include="shader\worley.comp">
       <Filter>资源文件</Filter>
     </None>
-    <None Include="shader\volumetric_clouds.comp">
-      <Filter>资源文件</Filter>
-    </None>
     <None Include="shader\weahter.comp">
-      <Filter>资源文件</Filter>
-    </None>
-    <None Include="shader\march2.comp">
       <Filter>资源文件</Filter>
     </None>
     <None Include="imgui\imgui.ini">
       <Filter>ImGUI</Filter>
+    </None>
+    <None Include="shader\noise\perlin.fs">
+      <Filter>资源文件\Noise</Filter>
+    </None>
+    <None Include="shader\noise\perlin.vs">
+      <Filter>资源文件\Noise</Filter>
+    </None>
+    <None Include="shader\noise\worley.fs">
+      <Filter>资源文件\Noise</Filter>
+    </None>
+    <None Include="shader\noise\worley.vs">
+      <Filter>资源文件\Noise</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -87,6 +102,15 @@
     <ClCompile Include="imgui\imgui_widgets.cpp">
       <Filter>ImGUI</Filter>
     </ClCompile>
+    <ClCompile Include="PerlinNoise.cpp">
+      <Filter>源文件\Noise</Filter>
+    </ClCompile>
+    <ClCompile Include="Help.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="WorleyNoise.cpp">
+      <Filter>源文件\Noise</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h">
@@ -103,6 +127,15 @@
     </ClInclude>
     <ClInclude Include="Cloud.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="PerlinNoise.h">
+      <Filter>头文件\Noise</Filter>
+    </ClInclude>
+    <ClInclude Include="Help.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="WorleyNoise.h">
+      <Filter>头文件\Noise</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

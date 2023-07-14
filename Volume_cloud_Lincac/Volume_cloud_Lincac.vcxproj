@@ -140,16 +140,19 @@
     <None Include="imgui\imgui.ini" />
     <None Include="shader\main.fs" />
     <None Include="shader\main.vs" />
-    <None Include="shader\march2.comp" />
+    <None Include="shader\noise\perlin.fs" />
+    <None Include="shader\noise\perlin.vs" />
+    <None Include="shader\noise\worley.fs" />
+    <None Include="shader\noise\worley.vs" />
     <None Include="shader\perlinworley.comp" />
     <None Include="shader\Raymarch.comp" />
-    <None Include="shader\volumetric_clouds.comp" />
     <None Include="shader\weahter.comp" />
     <None Include="shader\worley.comp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cloud.cpp" />
     <ClCompile Include="glad.c" />
+    <ClCompile Include="Help.cpp" />
     <ClCompile Include="imgui\imgui.cpp" />
     <ClCompile Include="imgui\imgui_demo.cpp" />
     <ClCompile Include="imgui\imgui_draw.cpp" />
@@ -158,16 +161,21 @@
     <ClCompile Include="imgui\imgui_tables.cpp" />
     <ClCompile Include="imgui\imgui_widgets.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PerlinNoise.cpp" />
     <ClCompile Include="stb_image.cpp" />
     <ClCompile Include="stb_image_write.cpp" />
     <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="WorleyNoise.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Cloud.h" />
     <ClInclude Include="ComputeShader.h" />
+    <ClInclude Include="Help.h" />
+    <ClInclude Include="PerlinNoise.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="Texture.h" />
+    <ClInclude Include="WorleyNoise.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

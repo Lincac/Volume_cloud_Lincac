@@ -1,4 +1,6 @@
 #include"Cloud.h"
+#include"PerlinNoise.h"
+#include"WorleyNoise.h"
 
 #include<imgui/imgui.h>
 #include<imgui/imgui_impl_glfw.h>
@@ -22,8 +24,6 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void mouse_button_callback(GLFWwindow* window, int key, int action, int mods);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 void processInput(GLFWwindow* window);
-void renderQuad();
-
 int main() {
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
@@ -64,6 +64,7 @@ int main() {
 	sceneShader.use();
 	sceneShader.setInt("image", 0);
 
+#pragma region pingpong
 	Shader shaderBlur("shader/pingpong.vs", "shader/pingpong.fs");
 	shaderBlur.use();
 	shaderBlur.setInt("image", 0);
@@ -86,6 +87,9 @@ int main() {
 			GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, pingpongBuffer[i], 0
 		);
 	}
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+	glBindTexture(GL_TEXTURE_2D, 0);
+#pragma endregion
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -199,33 +203,4 @@ void mouse_button_callback(GLFWwindow* window, int key, int action, int mods) {
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 {
 	camera.ProcessMouseScroll(float(yoffset));
-}
-
-unsigned int quadVAO = 0;
-void renderQuad()
-{
-	if (quadVAO == 0)
-	{
-		unsigned int quadVBO;
-		float quadVertices[] = {
-			// positions        // texture Coords
-			-1.0f,  1.0f, 0.0f, 0.0f, 1.0f,
-			-1.0f, -1.0f, 0.0f, 0.0f, 0.0f,
-			 1.0f,  1.0f, 0.0f, 1.0f, 1.0f,
-			 1.0f, -1.0f, 0.0f, 1.0f, 0.0f,
-		};
-		// setup plane VAO
-		glGenVertexArrays(1, &quadVAO);
-		glGenBuffers(1, &quadVBO);
-		glBindVertexArray(quadVAO);
-		glBindBuffer(GL_ARRAY_BUFFER, quadVBO);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(quadVertices), &quadVertices, GL_STATIC_DRAW);
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
-		glEnableVertexAttribArray(1);
-		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
-	}
-	glBindVertexArray(quadVAO);
-	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-	glBindVertexArray(0);
 }
